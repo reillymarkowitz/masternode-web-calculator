@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Masternode Calculator</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link rel="shortcut icon" href="favicon.ico">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="w3-container">
+      <p>
+         <a href="https://www.blacknox.com"><img src="https://blacknox.com/wp-content/uploads/2017/12/Blacknox-logo-horiz-coin-1.png" height="35" width="200"></a>
+      <h1 style="text-align: center;">Masternode Calculator</h1>
+      <div class="row">
+         <div class="column1">
+            <h2>Input</h2>
+            <form>
+               <table>
+                  <tr>
+                     <td>Asset:</td>
+                     <td>
+                        <select id="dropdown" onchange="changeAsset()">
+                           <option value="">- Select -</option>
+                           <option value="GBX">GoByte</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>Price per token (USD):</td>
+                     <td id="token-price"></td>
+                  </tr>
+                  <tr>
+                     <td>Current reward interval:</td>
+                     <td><input type="number" id="reward-interval" style="width: 80px"></td>
+                  </tr>
+                  <tr>
+                     <td>Initial purchased nodes:</td>
+                     <td><input type="number" id="purchased-nodes" style="width: 80px"></td>
+                  </tr>
+                  <tr>
+                     <td>% monthly price increase:</td>
+                     <td><input type="number" id="monthly-price-increase" style="width: 80px"></td>
+                  </tr>
+                  <tr>
+                     <td>% rewards cashed out monthly</td>
+                     <td><input type="number" id="monthly-rewards-cashed" style="width: 80px"></td>
+                  </tr>
+                  <tr>
+                     <td># of months to calculate</td>
+                     <td><input type="number" id="months" style="width: 80px"></td>
+                  </tr>
+               </table>
+               <p style="text-align: center;">
+                  <input type="button" onclick="calculate()" value="Calculate">
+               </p>
+            </form>
+         </div>
+         <div class="column2">
+            <div id="output" style="visibility: hidden;">
+               <table id="output-table">
+               	<thead>
+                  <tr id="label-row">
+                     <th>Month</th>
+                     <th>Nodes</th>
+                     <th>Hours between rewards</th>
+                     <th>Total coins</th>
+                     <th>Reward coins</th>
+                     <th>New nodes</th>
+                     <th>Remaining coins not in MNs</th>
+                     <th>Total coin value</th>
+                     <th>Token price</th>
+                     <th>Reward coins cashed out</th>
+                     <th>Cashed out coin value</th>
+                  </tr>
+              </thead>
+              <tbody></tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="scripts/changeAsset.js"></script>
+      <script src="scripts/calculate.js"></script>
+      <script>
+      	window.onload=function(){
+      		var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+      		if (mobile) {
+      			alert("This tool is not optimized for mobile devices.");              
+      		} else {
+
+      		}
+      	}
+      </script>
+   </body>
+</html>
