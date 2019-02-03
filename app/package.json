@@ -1,0 +1,24 @@
+{
+  "name": "masternode-web-calculator",
+  "version": "1.0.0",
+  "description": "A web tool for calculating and tracking the progress of masternode investments.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reillymarkowitz/masternode-web-calculator.git"
+  },
+  "author": "Reilly Markowitz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reillymarkowitz/masternode-web-calculator/issues"
+  },
+  "homepage": "https://github.com/reillymarkowitz/masternode-web-calculator#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "server": "^1.0.18"
+  }
+}
