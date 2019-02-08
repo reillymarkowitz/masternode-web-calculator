@@ -38,8 +38,8 @@ function changeAsset() {
             }
         })
 
-        // makeCorsRequest()
-    } else document.getElementById("token-price").innerHTML = ""; */
+        // makeCorsRequest() */
+    } else document.getElementById("token-price").innerHTML = "";
 }
 /*
 function createCORSRequest(method, url) {
