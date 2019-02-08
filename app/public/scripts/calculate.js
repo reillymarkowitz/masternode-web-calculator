@@ -2,6 +2,7 @@ var data = [];
 
 function calculate() {
     resetTable();
+    var today = new Date();
     var numMonths = document.getElementById("months").value;
     if (numMonths > 0) {
         var firstMonth = {
@@ -11,22 +12,25 @@ function calculate() {
         };
         firstMonth["reward_time"] = firstMonth["nodes"] * 150 / 60 / 60 + parseFloat(document.getElementById("reward-interval").value);
         firstMonth["total_coins"] = firstMonth["nodes"] * 1000;
-        firstMonth["reward_coins"] = 720 / firstMonth["reward_time"] * 7.5 * firstMonth["nodes"];
+        // firstMonth["reward_coins"] = 720 / firstMonth["reward_time"] * 7.5 * firstMonth["nodes"];
+        firstMonth["reward_coins"] = 720 / firstMonth["reward_time"] * reward(new Date()) * firstMonth["nodes"];
         firstMonth["new_nodes"] = Math.floor(firstMonth["reward_coins"] / 1000);
         firstMonth["remaining_coins"] = firstMonth["reward_coins"] - firstMonth["new_nodes"] * 1000;
         firstMonth["total_value"] = firstMonth["total_coins"] * firstMonth["current_price"];
         firstMonth["cashed_out"] = firstMonth["reward_coins"] * parseFloat(document.getElementById("monthly-rewards-cashed").value / 100);
         firstMonth["cashed_out_value"] = firstMonth["cashed_out"] * firstMonth["current_price"];
         data.push(firstMonth);
+        
         var i;
         for (i = 1; i < numMonths; i++) {
+            today.setMonth(today.getMonth() + i);
             var nextMonth = {
                 "month": i + 1,
                 "nodes": data[i - 1]["nodes"] + data[i - 1]["new_nodes"],
                 "current_price": data[i - 1]["current_price"] * (1 + parseFloat(document.getElementById("monthly-price-increase").value / 100))
             };
             nextMonth["reward_time"] = nextMonth["nodes"] / 24 + parseFloat(document.getElementById("reward-interval").value);
-            nextMonth["reward_coins"] = 720 / nextMonth["reward_time"] * nextMonth["nodes"] * reward(nextMonth["month"]);
+            nextMonth["reward_coins"] = 720 / nextMonth["reward_time"] * nextMonth["nodes"] * reward(today);
             nextMonth["cashed_out"] = nextMonth["reward_coins"] * parseFloat(document.getElementById("monthly-rewards-cashed").value / 100);
             nextMonth["cashed_out_value"] = nextMonth["cashed_out"] * nextMonth["current_price"];
             nextMonth["total_coins"] = data[i - 1]["total_coins"] + data[i - 1]["reward_coins"] - nextMonth["cashed_out"];
@@ -86,10 +90,8 @@ function formatUSD(num) {
     return '$' + formatNum(num.toFixed(2));
 }
 
-function reward(month) {
-    var year = parseInt((month - 1) / 12);
-    if (year == 0)
-        return 7.5;
-    previous = reward(month - 12);
-    return previous - previous * 0.0833;
+function reward(date) {
+    epoch = new Date(2019, 0, 1)
+    yearsSince = date.getFullYear - epoch.getFullYear
+    return 8.6625 * Math.pow((1 - 0.0833), yearsSince)
 }
