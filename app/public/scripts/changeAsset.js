@@ -39,7 +39,7 @@ function changeAsset() {
         })
 
         // makeCorsRequest()
-    } else document.getElementById("token-price").innerHTML = "";
+    } else document.getElementById("token-price").innerHTML = ""; */
 }
 /*
 function createCORSRequest(method, url) {
