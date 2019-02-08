@@ -5,7 +5,22 @@ function changeAsset() {
         };
         var token_id = dict[dropdown.value];
         var CORS = 'https://crossorigin.me/'
+
+        $.ajax({
+            url: 'http://http://159.69.14.194/price',
+            dataType: "json",
+            type: "get",
+            cache: false,
+            success: function(output) {
+                var price = output // .data.quotes.USD.price;
+                document.getElementById("token-price").innerHTML = price;
+            },
+            error: function (request, status, error) {
+                alert(error);
+            }
+        })
         
+        /*
         $.ajax({
             headers: {
                 'X-CMC_PRO_API_KEY' : '2b1194db-b4a5-48d9-996b-c86e13c46b03'
