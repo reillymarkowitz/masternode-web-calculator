@@ -7,7 +7,7 @@ function changeAsset() {
         var CORS = 'https://crossorigin.me/'
 
         $.ajax({
-            url: 'http://http://159.69.14.194/price',
+            url: 'http://159.69.14.194/price',
             dataType: "json",
             type: "get",
             cache: false,
