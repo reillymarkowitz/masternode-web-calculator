@@ -93,5 +93,7 @@ function formatUSD(num) {
 function reward(date) {
     epoch = new Date(2019, 0, 1)
     yearsSince = date.getFullYear - epoch.getFullYear
-    return 8.6625 * Math.pow((1 - 0.0833), yearsSince)
+    reward = 8.6625 * Math.pow((1 - 0.0833), yearsSince)
+    console.log(reward)
+    return reward
 }
