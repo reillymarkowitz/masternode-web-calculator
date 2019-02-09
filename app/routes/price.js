@@ -16,7 +16,12 @@ router.get('/', function(req, res, next) {
     request(options, (error, response, body) => {
         if (!error && response.statusCode == 200) {
             const info = JSON.parse(body)
-            res.send(info)
+            data = info['data']
+            num = data['2200']
+            quote = num['quote']
+            usd = quote['usd']
+            price = usd['price']
+            res.send(price)
           }
     });
 
