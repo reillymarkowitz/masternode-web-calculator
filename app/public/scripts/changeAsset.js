@@ -11,8 +11,7 @@ function changeAsset() {
             type: "get",
             cache: false,
             success: function(output) {
-                var price = output.data.quotes.USD.price;
-                document.getElementById("token-price").innerHTML = price;
+                document.getElementById("token-price").innerHTML = output;
             }
         })
         

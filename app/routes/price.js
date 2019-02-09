@@ -13,11 +13,13 @@ router.get('/', function(req, res, next) {
         }
     };
 
+    price = -1
+
     request(options, (error, response, body) => {
         if (!error && response.statusCode == 200) {
             const info = JSON.parse(body)
             price = info['data']['2200']['quote']['USD']['price']
-            res.send(price)
+            res.send(price.toString())
           }
     });
 
