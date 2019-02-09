@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
             num = data['2200']
             quote = num['quote']
             usd = quote['usd']
-            price = usd['price']
+            // price = usd['price']
             res.send(info)
           }
     });
