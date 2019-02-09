@@ -94,6 +94,6 @@ function reward(date) {
     epoch = new Date(2019, 0, 1)
     yearsSince = date.getFullYear - epoch.getFullYear
     reward = 8.6625 * Math.pow((1 - 0.0833), yearsSince)
-    console.log(Math.pow((1 - 0.0833), yearsSince))
+    console.log(Math.pow(3, 2))
     return reward
 }
