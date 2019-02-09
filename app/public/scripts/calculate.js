@@ -10,9 +10,8 @@ function calculate() {
             "nodes": parseInt(document.getElementById("purchased-nodes").value),
             "current_price": parseFloat(document.getElementById("token-price").innerHTML)
         };
-        firstMonth["reward_time"] = firstMonth["nodes"] * 150 / 60 / 60 + parseFloat(document.getElementById("reward-interval").value);
+        firstMonth["reward_time"] = parseFloat(document.getElementById("reward-interval").value);
         firstMonth["total_coins"] = firstMonth["nodes"] * 1000;
-        // firstMonth["reward_coins"] = 720 / firstMonth["reward_time"] * 7.5 * firstMonth["nodes"];
         firstMonth["reward_coins"] = 720 / firstMonth["reward_time"] * reward(new Date()) * firstMonth["nodes"];
         firstMonth["new_nodes"] = Math.floor(firstMonth["reward_coins"] / 1000);
         firstMonth["remaining_coins"] = firstMonth["reward_coins"] - firstMonth["new_nodes"] * 1000;
@@ -23,7 +22,7 @@ function calculate() {
         
         var i;
         for (i = 1; i < numMonths; i++) {
-            today.setMonth(today.getMonth() + i);
+            today.setMonth(today.getMonth() + 1);
             var nextMonth = {
                 "month": i + 1,
                 "nodes": data[i - 1]["nodes"] + data[i - 1]["new_nodes"],
