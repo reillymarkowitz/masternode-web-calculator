@@ -2,6 +2,7 @@ var data = [];
 
 function calculate() {
     resetTable();
+    data = []
     var today = new Date();
     var numMonths = document.getElementById("months").value;
     if (numMonths > 0) {
@@ -76,9 +77,7 @@ function writeToTable() {
 }
 
 function resetTable() {
-    while (document.getElementById("output-table").rows.length > 1) {
-        document.getElementById("output-table").deleteRow(1);
-    }
+    $("#output-table tbody tr").remove()
 }
 
 function formatNum(num) {
