@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/reillymarkowitz/masternode-web-calculator#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "server": "^1.0.18"
   }
 }
